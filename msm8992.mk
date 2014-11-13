@@ -12,35 +12,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ifneq ($(TARGET_USES_AOSP),true)
-TARGET_USES_QCA_NFC := true
+TARGET_USES_QCA_NFC := other
 TARGET_USES_QCOM_BSP := true
 endif
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
-# copy customized media_profiles and media_codecs xmls for 8994
+# copy customized media_profiles and media_codecs xmls for 8992
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8994/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8994/media_codecs.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/msm8992/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/qcom/msm8992/media_codecs.xml:system/etc/media_codecs.xml
 endif  #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common64.mk)
 
-PRODUCT_NAME := msm8994
-PRODUCT_DEVICE := msm8994
+PRODUCT_NAME := msm8992
+PRODUCT_DEVICE := msm8992
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := MSM8994 for arm64
+PRODUCT_MODEL := MSM8992 for arm64
 
-PRODUCT_BOOT_JARS += qcmediaplayer \
-                     qcom.fmradio
+#PRODUCT_BOOT_JARS += qcmediaplayer
+#PRODUCT_BOOT_JARS += qcom.fmradio
 
-PRODUCT_BOOT_JARS += WfdCommon
-PRODUCT_BOOT_JARS += extendedmediaextractor
-PRODUCT_BOOT_JARS += org.codeaurora.Performance
-PRODUCT_BOOT_JARS += security-bridge
-PRODUCT_BOOT_JARS += qsb-port
-PRODUCT_BOOT_JARS += oem-services
-PRODUCT_BOOT_JARS += vcard
+#PRODUCT_BOOT_JARS += WfdCommon
+#PRODUCT_BOOT_JARS += extendedmediaextractor
+#PRODUCT_BOOT_JARS += org.codeaurora.Performance
+#PRODUCT_BOOT_JARS += security-bridge
+#PRODUCT_BOOT_JARS += qsb-port
+#PRODUCT_BOOT_JARS += oem-services
+#PRODUCT_BOOT_JARS += vcard
+PRODUCT_BOOT_JARS += tcmiface
 
 # default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -54,19 +55,19 @@ PRODUCT_COPY_FILES += \
     device/qcom/common/media/audio_policy.conf:system/etc/audio_policy.conf
 else
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8994/audio_policy.conf:system/etc/audio_policy.conf
+    device/qcom/msm8992/audio_policy.conf:system/etc/audio_policy.conf
 endif
 
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8994/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
-    device/qcom/msm8994/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/msm8994/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/qcom/msm8994/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
-    device/qcom/msm8994/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
-    device/qcom/msm8994/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
-    device/qcom/msm8994/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/qcom/msm8994/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    device/qcom/msm8994/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    device/qcom/msm8992/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+    device/qcom/msm8992/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/qcom/msm8992/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/qcom/msm8992/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
+    device/qcom/msm8992/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    device/qcom/msm8992/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    device/qcom/msm8992/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/qcom/msm8992/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    device/qcom/msm8992/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 # Camera configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -74,13 +75,13 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8994/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/qcom/msm8992/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8994/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/qcom/msm8994/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8994/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+    device/qcom/msm8992/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/qcom/msm8992/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/qcom/msm8992/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
     wpa_supplicant \
@@ -94,7 +95,7 @@ PRODUCT_PACKAGES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8994/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf \
+    device/qcom/msm8992/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -117,7 +118,7 @@ ifeq ($(NFC_D), true)
     PRODUCT_PACKAGES += \
         libqnfc-nci \
         libqnfc_nci_jni \
-        nfc_nci.msm8994 \
+        nfc_nci.msm8992 \
         QNfc \
         Tag \
         GsmaNfcService \
@@ -136,7 +137,7 @@ else
     PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
-    nfc_nci.msm8994 \
+    nfc_nci.msm8992 \
     NfcNci \
     Tag \
     com.android.nfc_extras

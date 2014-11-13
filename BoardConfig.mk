@@ -3,8 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_PLATFORM := msm8994
-TARGET_BOOTLOADER_BOARD_NAME := msm8994
+TARGET_BOARD_PLATFORM := msm8992
+TARGET_BOOTLOADER_BOARD_NAME := msm8992
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -23,8 +23,9 @@ TARGET_2ND_CPU_VARIANT := cortex-a9
 endif
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_NO_BOOTLOADER := false
+BOOTLOADER_PLATFORM := msm8994 # use msm8994 LK configuration
 TARGET_NO_KERNEL := false
--include $(QCPATH)/common/msm8994/BoardConfigVendor.mk
+-include $(QCPATH)/common/msm8992/BoardConfigVendor.mk
 MINIMAL_FONT_FOOTPRINT := true
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
@@ -34,8 +35,8 @@ USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x02000000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x02000000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
@@ -47,7 +48,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 earlyprintk=msm_hsl_uart,0xf991e000 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 earlyprintk=msm_hsl_uart,0xf9922000 androidboot.selinux=permissive
 
 BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
 BOARD_KERNEL_SEPARATED_DT := true

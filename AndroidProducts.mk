@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/msm8994.mk
+	$(LOCAL_DIR)/msm8992.mk
