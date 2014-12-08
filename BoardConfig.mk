@@ -89,6 +89,9 @@ PROTOBUF_SUPPORTED := true
 #Enable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
+#Enable peripheral manager
+TARGET_PER_MGR_ENABLED := true
+
 # Enable dex pre-opt to speed up initial boot
 ifneq ($(TARGET_USES_AOSP),true)
   ifeq ($(HOST_OS),linux)
