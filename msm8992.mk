@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ifneq ($(TARGET_USES_AOSP),true)
-TARGET_USES_QCA_NFC := other
+TARGET_USES_QCA_NFC := true
 TARGET_USES_QCOM_BSP := true
 endif
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
