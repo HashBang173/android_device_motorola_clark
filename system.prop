@@ -112,6 +112,10 @@ ro.bluetooth.a4wp=true
 #system prop for wipower support
 ro.bluetooth.wipower=true
 
+#Set this true as ROME on 8992 always comes with Wipower programmed
+#and triggering embedded mode by deafult
+persist.BT3_2.version=true
+
 #
 #snapdragon value add features
 #
