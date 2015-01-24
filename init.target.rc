@@ -55,6 +55,7 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+    mkdir /data/misc/dts 0770 media audio
 
 on boot
     start rmt_storage
@@ -278,5 +279,11 @@ service seald /system/bin/seald
 service energy-awareness /system/bin/energy-awareness
     class main
     user root
+    group system
+    oneshot
+
+service dts_configurator /system/bin/dts_configurator
+    class main
+    user system
     group system
     oneshot
