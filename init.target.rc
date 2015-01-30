@@ -103,6 +103,7 @@ service qmpd /system/bin/qmpd
    group system
 
 service perfd /system/bin/perfd
+   class main
    user root
    disabled
 
