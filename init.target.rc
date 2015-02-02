@@ -34,6 +34,7 @@ on early-init
 
 on fs
     mount_all fstab.qcom
+    swapon_all fstab.qcom
 
     wait /dev/block/bootdevice/by-name/cache
     mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
