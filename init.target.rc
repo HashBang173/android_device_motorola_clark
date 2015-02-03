@@ -270,3 +270,9 @@ service seald /system/bin/seald
     class late_start
     user root
     group system
+
+service energy-awareness /system/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
