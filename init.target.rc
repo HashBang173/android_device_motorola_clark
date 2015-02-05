@@ -111,6 +111,7 @@ service qmpd /system/bin/qmpd
    class core
    user system
    group system
+   socket qmpdw dgram 0666 system system
 
 service perfd /system/bin/perfd
    class main
