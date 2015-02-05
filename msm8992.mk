@@ -31,7 +31,7 @@ PRODUCT_DEVICE := msm8992
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := MSM8992 for arm64
 
-#PRODUCT_BOOT_JARS += qcmediaplayer
+PRODUCT_BOOT_JARS += qcmediaplayer
 PRODUCT_BOOT_JARS += qcom.fmradio
 
 PRODUCT_BOOT_JARS += WfdCommon
