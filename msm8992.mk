@@ -11,6 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8992/overlay
+
 ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCA_NFC := true
 TARGET_USES_QCOM_BSP := true
@@ -70,10 +72,6 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8992/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
     device/qcom/msm8992/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
     device/qcom/msm8992/audio_platform_info.xml:system/etc/audio_platform_info.xml
-
-# Camera configuration
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera.disable_zsl_mode=1
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
@@ -167,3 +165,4 @@ endif # TARGET_USES_QCA_NFC
 
 PRODUCT_SUPPORTS_VERITY := true
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+PRODUCT_AAPT_CONFIG += xlarge large
