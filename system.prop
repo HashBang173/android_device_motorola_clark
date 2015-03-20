@@ -152,8 +152,11 @@ audio.offload.buffer.size.kb=32
 #Enable offload audio video playback by default
 av.offload.enable=true
 
-#Disable 16 bit PCM offload by default
+#Enable 16 bit PCM offload by default
 audio.offload.pcm.16bit.enable=true
+
+#Enable multi offload by default
+audio.offload.multiple.enabled=true
 
 #Enable 24 bit PCM offload by default
 audio.offload.pcm.24bit.enable=true
