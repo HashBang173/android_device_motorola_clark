@@ -285,7 +285,16 @@ service energy-awareness /system/bin/energy-awareness
     oneshot
 
 service dts_configurator /system/bin/dts_configurator
-    class main
+    class late_start
     user system
-    group system
+    group system media audio
     oneshot
+
+service dtseagleservice /system/bin/dts_eagle_service
+    class late_start
+    user system
+    group audio media
+    disabled
+
+on property:init.svc.dts_configurator=stopped
+    start dtseagleservice
