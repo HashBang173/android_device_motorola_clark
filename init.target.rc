@@ -109,11 +109,11 @@ service qseecomd /system/bin/qseecomd
    user root
    group root
 
-service seempd /system/bin/seempd
-   class core
-   user system
-   group system
-   socket seempdw dgram 0666 system system
+#service seempd /system/bin/seempd
+#   class core
+#   user system
+#   group system
+#   socket seempdw dgram 0666 system system
 
 service perfd /system/bin/perfd
    class main
