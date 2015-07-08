@@ -156,7 +156,7 @@ av.offload.enable=true
 audio.offload.pcm.16bit.enable=true
 
 #Enable multi offload by default
-audio.offload.multiple.enabled=true
+audio.offload.multiple.enabled=false
 
 #Enable 24 bit PCM offload by default
 audio.offload.pcm.24bit.enable=true
