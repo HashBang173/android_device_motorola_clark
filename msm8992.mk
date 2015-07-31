@@ -50,9 +50,6 @@ PRODUCT_BOOT_JARS += qcom.fmradio
 PRODUCT_BOOT_JARS += WfdCommon
 endif
 
-# default is nosdcard, S/W button enabled in resource
-PRODUCT_CHARACTERISTICS := nosdcard
-
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 
