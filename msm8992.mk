@@ -42,7 +42,7 @@ PRODUCT_BOOT_JARS += qcmediaplayer
 #PRODUCT_BOOT_JARS += security-bridge
 #PRODUCT_BOOT_JARS += qsb-port
 #PRODUCT_BOOT_JARS += oem-services
-#PRODUCT_BOOT_JARS += vcard
+PRODUCT_BOOT_JARS += vcard
 PRODUCT_BOOT_JARS += tcmiface
 
 ifneq ($(strip $(QCPATH)),)
