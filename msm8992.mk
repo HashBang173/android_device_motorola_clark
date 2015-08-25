@@ -16,6 +16,7 @@ DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8992/overlay
 ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCA_NFC := true
 TARGET_USES_QCOM_BSP := true
+TARGET_USES_NQ_NFC := false
 endif
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
@@ -161,6 +162,24 @@ PRODUCT_COPY_FILES += \
 
 # SmartcardService, SIM1,SIM2,eSE1 not including eSE2,SD1 as default
 ADDITIONAL_BUILD_PROPERTIES += persist.nfc.smartcard.config=SIM1,SIM2,eSE1
+else
+ifeq ($(TARGET_USES_NQ_NFC),true)
+PRODUCT_PACKAGES += \
+    nfc.msm8952 \
+    NfcNci \
+    libnfc-nci \
+    libnfc_nci_jni \
+    nfc_nci.nqx.default \
+    Tag \
+    com.android.nfc_extras
+
+PRODUCT_COPY_FILES += \
+    packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
+endif # TARGET_USES_NQ_NFC
 endif # TARGET_USES_QCA_NFC
 
 PRODUCT_SUPPORTS_VERITY := true
