@@ -2,6 +2,8 @@ ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
+LOCAL_PROPRIETARY_MODULE := true
+
 sourceFiles := \
                cryptfs_hw.c
 
@@ -18,6 +20,10 @@ LOCAL_MODULE:= libcryptfs_hw
 LOCAL_SHARED_LIBRARIES := $(commonSharedLibraries)
 
 LOCAL_MODULE_OWNER := qcom
+
+ifeq ($(TARGET_SWV8_DISK_ENCRYPTION),true)
+LOCAL_CFLAGS += -DCONFIG_SWV8_DISK_ENCRYPTION
+endif
 
 # USE_ICE_FOR_STORAGE_ENCRYPTION would be true in future if
 # TARGET_USE_EMMC_USE_ICE is set

@@ -67,6 +67,7 @@ BOARD_CUSTOM_BOOTIMG_MK := device/motorola/clark/mkbootimg.mk
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -79,17 +80,6 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
 TARGET_LDPRELOAD := libNimsWrap.so
-
-# Recovery
-PRODUCT_COPY_FILES := device/motorola/clark/recovery.fstab:recovery/root/etc/recovery.fstab
-DEVICE_RESOLUTION := 1440x2560
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/clark/recovery/graphics.c
-TW_INCLUDE_L_CRYPTO := true
-TW_TARGET_USES_QCOM_BSP := true
-TW_NEW_ION_HEAP := true
-TW_INCLUDE_CRYPTO := true
-TW_SCREEN_BLANK_ON_BOOT := true
-BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true

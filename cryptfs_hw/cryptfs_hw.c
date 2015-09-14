@@ -38,12 +38,6 @@
 #include "cutils/properties.h"
 #include "cutils/android_reboot.h"
 
-#if defined(__LP64__)
-#define QSEECOM_LIBRARY_PATH "/vendor/lib64/libQSEEComAPI.so"
-#else
-#define QSEECOM_LIBRARY_PATH "/vendor/lib/libQSEEComAPI.so"
-#endif
-
 
 // When device comes up or when user tries to change the password, user can
 // try wrong password upto a certain number of times. If user enters wrong
@@ -58,6 +52,11 @@
 /* Operations that be performed on HW based device encryption key */
 #define SET_HW_DISK_ENC_KEY 1
 #define UPDATE_HW_DISK_ENC_KEY 2
+#define MAX_DEVICE_ID_LENGTH 4 /* 4 = 3 (MAX_SOC_ID_LENGTH) + 1 */
+
+static unsigned int cpu_id[] = {
+	239, /* MSM8939 SOC ID */
+};
 
 static int loaded_library = 0;
 static unsigned char current_passwd[MAX_PASSWORD_LEN];
@@ -110,7 +109,11 @@ static int load_qseecom_library()
     if (loaded_library)
         return loaded_library;
 
-    void * handle = dlopen(QSEECOM_LIBRARY_PATH, RTLD_NOW);
+#ifdef __LP64__
+    void * handle = dlopen("/vendor/lib64/libQSEEComAPI.so", RTLD_NOW);
+#else
+    void * handle = dlopen("/vendor/lib/libQSEEComAPI.so", RTLD_NOW);
+#endif
     if(handle) {
         dlerror(); /* Clear any existing error */
         *(void **) (&qseecom_create_key) = dlsym(handle,"QSEECom_create_key");
@@ -192,6 +195,69 @@ unsigned int is_hw_disk_encryption(const char* encryption_mode)
     return ret;
 }
 
+unsigned int wipe_hw_device_encryption_key(const char* enc_mode)
+{
+    if (!enc_mode)
+        return -1;
+
+    if (is_hw_disk_encryption(enc_mode) && load_qseecom_library())
+        return qseecom_wipe_key(QSEECOM_DISK_ENCRYPTION);
+
+    return 0;
+}
+
+/*
+ * By default HW FDE is enabled, if the execution comes to
+ * is_hw_fde_enabled() API then for specific device/soc id,
+ * HW FDE is disabled.
+ */
+#ifdef CONFIG_SWV8_DISK_ENCRYPTION
+unsigned int is_hw_fde_enabled(void)
+{
+    unsigned int device_id = -1;
+    unsigned int array_size;
+    unsigned int status = 1;
+    FILE *fd = NULL;
+    unsigned int i;
+    int ret = -1;
+    char buf[MAX_DEVICE_ID_LENGTH];
+
+    fd = fopen("/sys/devices/soc0/soc_id", "r");
+    if (fd) {
+        ret = fread(buf, 1, MAX_DEVICE_ID_LENGTH, fd);
+        fclose(fd);
+    } else {
+        fd = fopen("/sys/devices/system/soc/soc0/id", "r");
+        if (fd) {
+            ret = fread(buf, 1, MAX_DEVICE_ID_LENGTH, fd);
+            fclose(fd);
+        }
+    }
+
+    if (ret > 0) {
+        device_id = atoi(buf);
+    } else {
+        SLOGE("Failed to read device id");
+        return status;
+    }
+
+    array_size = sizeof(cpu_id) / sizeof(cpu_id[0]);
+    for (i = 0; i < array_size; i++) {
+        if (device_id == cpu_id[i]) {
+            status = 0;
+            break;
+        }
+    }
+
+    return status;
+}
+#else
+unsigned int is_hw_fde_enabled(void)
+{
+    return 1;
+}
+#endif
+
 int is_ice_enabled(void)
 {
     /* If (USE_ICE_FLAG) => return 1
@@ -224,15 +290,4 @@ int is_ice_enabled(void)
     SLOGD("GPCE would be used for HW FDE");
     return 0;
 #endif
-}
-
-int wipe_hw_device_encryption_key(const char* enc_mode)
-{
-    if (!enc_mode)
-        return -1;
-
-    if (is_hw_disk_encryption(enc_mode) && load_qseecom_library())
-        return qseecom_wipe_key(map_usage(QSEECOM_DISK_ENCRYPTION));
-
-    return 0;
 }

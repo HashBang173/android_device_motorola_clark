@@ -26,18 +26,63 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define NODE_MAX (64)
+#define LOG_NIDEBUG 0
 
-#define SCALING_GOVERNOR_PATH "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-#define DCVS_CPU0_SLACK_MAX_NODE "/sys/module/msm_dcvs/cores/cpu0/slack_time_max_us"
-#define DCVS_CPU0_SLACK_MIN_NODE "/sys/module/msm_dcvs/cores/cpu0/slack_time_min_us"
-#define MPDECISION_SLACK_MAX_NODE "/sys/module/msm_mpdecision/slack_time_max_us"
-#define MPDECISION_SLACK_MIN_NODE "/sys/module/msm_mpdecision/slack_time_min_us"
-#define SCALING_MIN_FREQ "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq"
+#include <errno.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <dlfcn.h>
+#include <stdlib.h>
 
-#define ONDEMAND_GOVERNOR "ondemand"
-#define INTERACTIVE_GOVERNOR "interactive"
-#define MSMDCVS_GOVERNOR "msm-dcvs"
+#define LOG_TAG "QCOM PowerHAL"
+#include <utils/Log.h>
+#include <hardware/hardware.h>
+#include <hardware/power.h>
 
-#define HINT_HANDLED (0)
-#define HINT_NONE (-1)
+#include "utils.h"
+#include "metadata-defs.h"
+#include "hint-data.h"
+#include "performance.h"
+#include "power-common.h"
+
+static int display_hint_sent;
+
+int set_interactive_override(struct power_module *module, int on)
+{
+    char governor[80];
+
+    if (get_scaling_governor(governor, sizeof(governor)) == -1) {
+        ALOGE("Can't obtain scaling governor.");
+
+        return HINT_NONE;
+    }
+
+    if (!on) {
+        /* Display off. */
+        if ((strncmp(governor, ONDEMAND_GOVERNOR, strlen(ONDEMAND_GOVERNOR)) == 0) &&
+                (strlen(governor) == strlen(ONDEMAND_GOVERNOR))) {
+            int resource_values[] = {MS_500, THREAD_MIGRATION_SYNC_OFF};
+
+            if (!display_hint_sent) {
+                perform_hint_action(DISPLAY_STATE_HINT_ID,
+                        resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+                display_hint_sent = 1;
+            }
+
+            return HINT_HANDLED;
+        }
+    } else {
+        /* Display on */
+        if ((strncmp(governor, ONDEMAND_GOVERNOR, strlen(ONDEMAND_GOVERNOR)) == 0) &&
+                (strlen(governor) == strlen(ONDEMAND_GOVERNOR))) {
+            undo_hint_action(DISPLAY_STATE_HINT_ID);
+            display_hint_sent = 0;
+
+            return HINT_HANDLED;
+        }
+    }
+
+    return HINT_NONE;
+}

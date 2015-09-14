@@ -40,3 +40,5 @@ void unvote_ondemand_sdf_low();
 void perform_hint_action(int hint_id, int resource_values[],
     int num_resources);
 void undo_hint_action(int hint_id);
+void undo_initial_hint_action();
+void set_profile(int profile);

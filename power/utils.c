@@ -44,7 +44,9 @@ static void *qcopt_handle;
 static int (*perf_lock_acq)(unsigned long handle, int duration,
     int list[], int numArgs);
 static int (*perf_lock_rel)(unsigned long handle);
+static int (*perf_lock_use_profile)(unsigned long handle, int profile);
 static struct list_node active_hint_list_head;
+static int profile_handle = 0;
 
 static void *get_qcopt_handle()
 {
@@ -87,6 +89,8 @@ static void __attribute__ ((constructor)) initialize(void)
         if (!perf_lock_rel) {
             ALOGE("Unable to get perf_lock_rel function handle.\n");
         }
+
+        perf_lock_use_profile = dlsym(qcopt_handle, "perf_lock_use_profile");
     }
 }
 
@@ -173,10 +177,9 @@ int get_scaling_governor(char governor[], int size)
 
 void interaction(int duration, int num_args, int opt_list[])
 {
-#ifdef INTERACTION_BOOST
     static int lock_handle = 0;
 
-    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
+    if (duration <= 0 || num_args < 1 || opt_list[0] == 0)
         return;
 
     if (qcopt_handle) {
@@ -186,7 +189,6 @@ void interaction(int duration, int num_args, int opt_list[])
                 ALOGE("Failed to acquire lock.");
         }
     }
-#endif
 }
 
 void perform_hint_action(int hint_id, int resource_values[], int num_resources)
@@ -279,6 +281,20 @@ void undo_initial_hint_action()
     if (qcopt_handle) {
         if (perf_lock_rel) {
             perf_lock_rel(1);
+        }
+    }
+}
+
+/* Set a static profile */
+void set_profile(int profile)
+{
+    if (qcopt_handle) {
+        if (perf_lock_use_profile) {
+            profile_handle = perf_lock_use_profile(profile_handle, profile);
+            if (profile_handle == -1)
+                ALOGE("Failed to set profile.");
+            if (profile < 0)
+                profile_handle = 0;
         }
     }
 }
