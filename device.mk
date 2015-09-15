@@ -51,25 +51,25 @@ PRODUCT_PACKAGES += libGLES_android
 # Audio configuration file
 ifeq ($(TARGET_USES_AOSP), true)
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/media/audio_policy.conf:system/etc/audio_policy.conf
+    device/motorola/clark/audio/audio_policy.conf:system/etc/audio_policy.conf
 else
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/audio_policy.conf:system/etc/audio_policy.conf
+    device/motorola/clark/audio/audio_policy.conf:system/etc/audio_policy.conf
 endif
 
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
-    device/motorola/clark/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/motorola/clark/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/motorola/clark/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
-    device/motorola/clark/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
-    device/motorola/clark/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/motorola/clark/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    device/motorola/clark/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    device/motorola/clark/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+    device/motorola/clark/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/motorola/clark/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/motorola/clark/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
+    device/motorola/clark/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    device/motorola/clark/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/motorola/clark/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    device/motorola/clark/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/motorola/clark/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
