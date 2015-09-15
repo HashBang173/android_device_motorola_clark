@@ -22,8 +22,8 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # copy customized media_profiles and media_codecs xmls for 8992
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/motorola/clark/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/motorola/clark/media_codecs.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/motorola/clark/configs/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/motorola/clark/configs/media_codecs.xml:system/etc/media_codecs.xml
 endif  #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 # Override heap growth limit due to high display density on device
