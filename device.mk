@@ -13,58 +13,34 @@
 # limitations under the License.
 DEVICE_PACKAGE_OVERLAYS := device/motorola/clark/overlay
 
-ifneq ($(TARGET_USES_AOSP),true)
-TARGET_USES_QCA_NFC := true
-TARGET_USES_QCOM_BSP := true
-TARGET_USES_NQ_NFC := false
-endif
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 # copy customized media_profiles and media_codecs xmls for 8992
-ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/motorola/clark/configs/media_profiles.xml:system/etc/media_profiles.xml \
                       device/motorola/clark/configs/media_codecs.xml:system/etc/media_codecs.xml
-endif  #TARGET_ENABLE_QC_AV_ENHANCEMENTS
-
-# Override heap growth limit due to high display density on device
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=256m
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_BOOT_JARS += qcmediaplayer
-#PRODUCT_BOOT_JARS += extendedmediaextractor
-#PRODUCT_BOOT_JARS += org.codeaurora.Performance
-#PRODUCT_BOOT_JARS += security-bridge
-#PRODUCT_BOOT_JARS += qsb-port
-PRODUCT_BOOT_JARS += oem-services
-PRODUCT_BOOT_JARS += vcard
-PRODUCT_BOOT_JARS += tcmiface
 
-ifneq ($(strip $(QCPATH)),)
-PRODUCT_BOOT_JARS += qcom.fmradio
-PRODUCT_BOOT_JARS += WfdCommon
-endif
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+    audio.primary.msm8992 \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio_policy.msm8992 \
+    tinymix
 
-#Android EGL implementation
-PRODUCT_PACKAGES += libGLES_android
+PRODUCT_PACKAGES += \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # Audio configuration file
-ifeq ($(TARGET_USES_AOSP), true)
 PRODUCT_COPY_FILES += \
     device/motorola/clark/audio/audio_policy.conf:system/etc/audio_policy.conf
-else
-PRODUCT_COPY_FILES += \
-    device/motorola/clark/audio/audio_policy.conf:system/etc/audio_policy.conf
-endif
 
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
     device/motorola/clark/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/motorola/clark/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/motorola/clark/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
-    device/motorola/clark/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
-    device/motorola/clark/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/motorola/clark/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
     device/motorola/clark/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 # Listen configuration file
@@ -93,7 +69,6 @@ PRODUCT_PACKAGES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -105,43 +80,75 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.ambient_temperature.xml:system/etc/permissions/android.hardware.sensor.ambient_temperature.xml \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:system/etc/permissions/android.hardware.sensor.relative_humidity.xml
 
+# Camera
+#PRODUCT_PACKAGES += \
+#    camera.msm8992
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8992 \
+    gralloc.msm8992 \
+    hwcomposer.msm8992 \
+    memtrack.msm8992 \
+    liboverlay
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    keystore.msm8992
+# GPS
+#PRODUCT_PACKAGES += \
+#    gps.msm8992
+
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8992
+
+# Init configuration
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    ueventd.qcom.rc
+
+# Init scripts
+PRODUCT_PACKAGES += \
+    init.qcom.sh
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+# OMX
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libstagefrighthw \
+    qcmediaplayer
+
+
 #ANT+ stack
 PRODUCT_PACKAGES += \
     AntHalService \
     libantradio \
     antradio_app
 
-ifeq ($(TARGET_USES_QCA_NFC),true)
-NFC_D := true
 
-ifeq ($(NFC_D), true)
-    PRODUCT_PACKAGES += \
-        libqnfc-nci \
-        libqnfc_nci_jni \
-        nfc_nci.msm8992 \
-        QNfc \
-        Tag \
-        GsmaNfcService \
-        com.gsma.services.nfc \
-        com.gsma.services.utils \
-        com.gsma.services.nfc.xml \
-        com.android.nfc_extras \
-        com.android.qcom.nfc_extras \
-        com.android.qcom.nfc_extras.xml \
-        com.android.nfc.helper \
-        SmartcardService \
-        org.simalliance.openmobileapi \
-        org.simalliance.openmobileapi.xml \
-        libassd
-else
-    PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
+    nfc.msm8952 \
+    NfcNci \
     libnfc-nci \
     libnfc_nci_jni \
-    nfc_nci.msm8992 \
-    NfcNci \
+    nfc_nci.nqx.default \
     Tag \
     com.android.nfc_extras
-endif
 
 # file that declares the MIFARE NFC constant
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
@@ -155,16 +162,6 @@ PRODUCT_COPY_FILES += \
 
 # SmartcardService, SIM1,SIM2,eSE1 not including eSE2,SD1 as default
 ADDITIONAL_BUILD_PROPERTIES += persist.nfc.smartcard.config=SIM1,SIM2,eSE1
-else
-ifeq ($(TARGET_USES_NQ_NFC),true)
-PRODUCT_PACKAGES += \
-    nfc.msm8952 \
-    NfcNci \
-    libnfc-nci \
-    libnfc_nci_jni \
-    nfc_nci.nqx.default \
-    Tag \
-    com.android.nfc_extras
 
 PRODUCT_COPY_FILES += \
     packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
@@ -172,15 +169,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
-endif # TARGET_USES_NQ_NFC
-endif # TARGET_USES_QCA_NFC
 
-PRODUCT_SUPPORTS_VERITY := true
-PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
-PRODUCT_AAPT_CONFIG += xlarge large
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := 560dpi
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    persist.radio.apm_sim_not_pwdn=1
-
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
