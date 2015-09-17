@@ -30,17 +30,21 @@ etc/acdbdata/Hdmi_cal.acdb
 etc/acdbdata/Speaker_cal.acdb
 
 # Audio firmware
-etc/firmware/aonvr1.bin
-etc/firmware/aonvr2.bin
-etc/firmware/left.tfa9890.config
-etc/firmware/left.tfa9890.eq
+#etc/firmware/aonvr1.bin	#revisit aonvr*.bin
+#etc/firmware/aonvr2.bin
+etc/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq
 etc/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq
 etc/firmware/left.tfa9890_music_table.preset
 etc/firmware/left.tfa9890_n1b12.patch
 etc/firmware/left.tfa9890_n1c2.patch
 etc/firmware/left.tfa9890_ringtone_table.preset
 etc/firmware/left.tfa9890_voice_table.preset
-etc/firmware/VRGain.bin
+etc/firmware/vrgain.bin
 
 # Offloaded audio effects
 vendor/lib/soundfx/libqcbassboost.so
@@ -60,7 +64,7 @@ bin/mm-qcamera-daemon
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
-lib/hw/camera.msm8992.so:lib/hw/camera.vendor.msm8992.so
+lib/hw/camera.msm8992.so:lib/hw/camera.msm8992.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
 lib/libAlAisLib.so
@@ -71,8 +75,8 @@ lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libjscore.so
 lib/libjustshoot.so
-lib/libmmcamera_ar0543.so
-lib/libmmcamera_interface.so
+vendor/lib/libmmcamera_ar0543.so
+vendor/lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
@@ -84,73 +88,108 @@ vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
 vendor/lib/libmmcamera2_iface_modules.so
 vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_is.so
 vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_pp_buf_mgr.so
 vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_q3a_core.so
+vendor/lib/libmmcamera2_sensor_debug.so
 vendor/lib/libmmcamera2_sensor_modules.so
 vendor/lib/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera2_stats_modules.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
-vendor/lib/libmmcamera_ar0261.so
+
+vendor/lib/libmmcamera_cac2_lib.so
+vendor/lib/libmmcamera_eeprom_util.so
+vendor/lib/libmmcamera_eztune_module.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
-vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx132_eeprom.so
-vendor/lib/libmmcamera_imx132.so
-vendor/lib/libmmcamera_imx135.so
-vendor/lib/libmmcamera_imx179.so
-vendor/lib/libmmcamera_mt9m114.so
-vendor/lib/libmmcamera_mt9v113.so
-vendor/lib/libmmcamera_ov10820.so
-vendor/lib/libmmcamera_s5k5e2.so
+vendor/lib/libmmcamera_isp_abf44.so
+vendor/lib/libmmcamera_isp_bcc44.so
+vendor/lib/libmmcamera_isp_be_stats44.so
+vendor/lib/libmmcamera_isp_bf_scale_stats44.so
+vendor/lib/libmmcamera_isp_bf_stats44.so
+vendor/lib/libmmcamera_isp_bg_stats44.so
+vendor/lib/libmmcamera_isp_bhist_stats44.so
+vendor/lib/libmmcamera_isp_bpc44.so
+vendor/lib/libmmcamera_isp_chroma_enhan40.so
+vendor/lib/libmmcamera_isp_chroma_suppress40.so
+vendor/lib/libmmcamera_isp_clamp_encoder40.so
+vendor/lib/libmmcamera_isp_clamp_video40.so
+vendor/lib/libmmcamera_isp_clamp_viewfinder40.so
+vendor/lib/libmmcamera_isp_clf44.so
+vendor/lib/libmmcamera_isp_color_correct40.so
+vendor/lib/libmmcamera_isp_color_xform_encoder40.so
+vendor/lib/libmmcamera_isp_color_xform_viewfinder40.so
+vendor/lib/libmmcamera_isp_cs_stats44.so
+vendor/lib/libmmcamera_isp_demosaic44.so
+vendor/lib/libmmcamera_isp_demux40.so
+vendor/lib/libmmcamera_isp_fovcrop_encoder40.so
+vendor/lib/libmmcamera_isp_fovcrop_viewfinder40.so
+vendor/lib/libmmcamera_isp_gamma44.so
+vendor/lib/libmmcamera_isp_ihist_stats44.so
+vendor/lib/libmmcamera_isp_linearization40.so
+vendor/lib/libmmcamera_isp_ltm44.so
+vendor/lib/libmmcamera_isp_luma_adaptation40.so
+vendor/lib/libmmcamera_isp_mce40.so
+vendor/lib/libmmcamera_isp_mesh_rolloff44.so
+vendor/lib/libmmcamera_isp_rs_stats44.so
+vendor/lib/libmmcamera_isp_scaler_encoder44.so
+vendor/lib/libmmcamera_isp_scaler_viewfinder44.so
+vendor/lib/libmmcamera_isp_sce40.so
+vendor/lib/libmmcamera_isp_sub_module.so
+vendor/lib/libmmcamera_isp_wb40.so
+vendor/lib/libmmcamera_mot_imx230.so
+vendor/lib/libmmcamera_omnivision_ov5693_eeprom.so
+vendor/lib/libmmcamera_ov5693.so
+vendor/lib/libmmcamera_ppbase_module.so
+vendor/lib/libmmcamera_sony_imx230_eeprom.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
-vendor/lib/libmmcamera_tuning.so
-vendor/lib/libmmcamera_wavelet_lib.so
-vendor/lib/libmmipl.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/liboemcamera.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc.so
-vendor/lib/libthermalclient.so
+vendor/lib/libmmcamera_vpu_module.so
+vendor/lib/libmmcamera_vstab_module.so
+
 
 # Chromatix
-lib/libchromatix_ar0543_common.so
-lib/libchromatix_ar0543_default_video.so
-lib/libchromatix_ar0543_hfr_60.so
-lib/libchromatix_ar0543_preview.so
-lib/libchromatix_ar0543_snapshot.so
-lib/libchromatix_imx135_liveshot.so
-vendor/lib/libchromatix_ar0261_common.so
-vendor/lib/libchromatix_ar0261_default_video.so
-vendor/lib/libchromatix_ar0261_snapshot.so
-vendor/lib/libchromatix_imx132_common.so
-vendor/lib/libchromatix_imx132_preview.so
-vendor/lib/libchromatix_imx132_snapshot.so
-vendor/lib/libchromatix_imx132_video.so
-vendor/lib/libchromatix_imx135_common.so
-vendor/lib/libchromatix_imx135_default_video.so
-vendor/lib/libchromatix_imx135_hfr_60.so
-vendor/lib/libchromatix_imx135_snapshot.so
-vendor/lib/libchromatix_imx179_common.so
-vendor/lib/libchromatix_imx179_default_video.so
-vendor/lib/libchromatix_imx179_hfr_60.so
-vendor/lib/libchromatix_imx179_preview.so
-vendor/lib/libchromatix_imx179_snapshot.so
-vendor/lib/libchromatix_ov10820_common.so
-vendor/lib/libchromatix_ov10820_preview.so
-vendor/lib/libchromatix_ov10820_snapshot.so
-vendor/lib/libchromatix_ov10820_zsl.so
-vendor/lib/libchromatix_s5k5e2_common.so
-vendor/lib/libchromatix_s5k5e2_default_video.so
-vendor/lib/libchromatix_s5k5e2_hfr_60fps.so
-vendor/lib/libchromatix_s5k5e2_liveshot.so
-vendor/lib/libchromatix_s5k5e2_preview.so
-vendor/lib/libchromatix_s5k5e2_snapshot.so
+vendor/lib/libchromatix_mot_imx230_common.so
+vendor/lib/libchromatix_mot_imx230_common_ihdr.so
+vendor/lib/libchromatix_mot_imx230_cpp_hfr_120.so
+vendor/lib/libchromatix_mot_imx230_cpp_liveshot.so
+vendor/lib/libchromatix_mot_imx230_cpp_liveshot_video_4k.so
+vendor/lib/libchromatix_mot_imx230_cpp_liveshot_video_ihdr.so
+vendor/lib/libchromatix_mot_imx230_cpp_liveshot_video_ihdr_4k.so
+vendor/lib/libchromatix_mot_imx230_cpp_snapshot.so
+vendor/lib/libchromatix_mot_imx230_cpp_snapshot_night.so
+vendor/lib/libchromatix_mot_imx230_cpp_video.so
+vendor/lib/libchromatix_mot_imx230_cpp_video_4k.so
+vendor/lib/libchromatix_mot_imx230_cpp_video_ihdr.so
+vendor/lib/libchromatix_mot_imx230_cpp_video_ihdr_4k.so
+vendor/lib/libchromatix_mot_imx230_default_video.so
+vendor/lib/libchromatix_mot_imx230_hfr_120.so
+vendor/lib/libchromatix_mot_imx230_postproc.so
+vendor/lib/libchromatix_mot_imx230_snapshot.so
+vendor/lib/libchromatix_mot_imx230_snapshot_night.so
+vendor/lib/libchromatix_mot_imx230_video_4k.so
+vendor/lib/libchromatix_mot_imx230_video_ihdr.so
+vendor/lib/libchromatix_mot_imx230_video_ihdr_4k.so
+vendor/lib/libchromatix_ov5693_common.so
+vendor/lib/libchromatix_ov5693_cpp_hfr_120.so
+vendor/lib/libchromatix_ov5693_cpp_liveshot.so
+vendor/lib/libchromatix_ov5693_cpp_preview.so
+vendor/lib/libchromatix_ov5693_cpp_snapshot.so
+vendor/lib/libchromatix_ov5693_cpp_snapshot_night.so
+vendor/lib/libchromatix_ov5693_cpp_video.so
+vendor/lib/libchromatix_ov5693_hfr_120.so
+vendor/lib/libchromatix_ov5693_postproc.so
+vendor/lib/libchromatix_ov5693_snapshot.so
+vendor/lib/libchromatix_ov5693_snapshot_night.so
+vendor/lib/libchromatix_ov5693_video.so
+
 
 # CPU
 bin/mpdecision
@@ -167,13 +206,13 @@ vendor/firmware/widevine.b02
 vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
 vendor/lib/libdrmdiag.so
-vendor/lib/libdrmfs.so
+vendor/lib64/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libsecureui.so
 vendor/lib/lib-sec-disp.so
-vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib64/drm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
@@ -217,8 +256,8 @@ vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libsc-a3xx.so
-vendor/lib/libscale.so
+#vendor/lib/libsc-a3xx.so	Needs investigating for now
+#vendor/lib/libscale.so
 
 # Graphics firmware
 etc/firmware/a330_pfp.fw
@@ -272,8 +311,7 @@ bin/hardware_revisions.sh
 bin/mount_ext4.sh
 
 # NFC
-etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
-
+etc/firmware/BCM20795A2_001.003.025.0005.0035_Generic_I2C_NCD_Signed_configdata.ncd
 # Postprocessing
 bin/mm-pp-daemon
 vendor/lib/libmm-abl.so
@@ -329,12 +367,7 @@ vendor/lib/libxml.so
 
 # Sensors
 bin/stm401
-etc/firmware/cy8c20247_24lkxi.hex
 etc/firmware/sensorhubfw.bin
-etc/firmware/sensorhubfw_p0.bin
-etc/firmware/sensorhubver_p0.txt
-etc/firmware/sensorhubver.txt
-lib/hw/sensorhub.msm8992.so
 lib/hw/sensors.msm8992.so
 
 # Time
