@@ -335,7 +335,7 @@ static inline void fs_config(const char *path, int dir,
                              unsigned *uid, unsigned *gid, unsigned *mode, uint64_t *capabilities)
 {
     const struct fs_path_config *pc;
-    int plen;
+    long unsigned int plen;
 
     if (path[0] == '/') {
         path++;
@@ -344,7 +344,7 @@ static inline void fs_config(const char *path, int dir,
     pc = dir ? android_dirs : android_files;
     plen = strlen(path);
     for(; pc->prefix; pc++){
-        int len = strlen(pc->prefix);
+        long unsigned int len = strlen(pc->prefix);
         if (dir) {
             if(plen < len) continue;
             if(!strncmp(pc->prefix, path, len)) break;
