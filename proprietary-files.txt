@@ -15,7 +15,7 @@ bin/adspd
 
 # Audio
 bin/adsprpcd
-lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
+#lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
@@ -52,7 +52,7 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libqcreverb.so
 
 # Battery
-bin/hvdcp
+#bin/hvdcp
 
 # Bluetooth
 bin/btnvtool
@@ -75,12 +75,12 @@ lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libjscore.so
 lib/libjustshoot.so
-vendor/lib/libmmcamera_ar0543.so
-vendor/lib/libmmcamera_interface.so
+#vendor/lib/libmmcamera_ar0543.so
+#vendor/lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
-lib/libmotocalibration.so
+#lib/libmotocalibration.so
 lib/libqomx_core.so
 vendor/lib/libadsprpc.so
 vendor/lib/libC2D2.so
@@ -192,35 +192,33 @@ vendor/lib/libchromatix_ov5693_video.so
 
 
 # CPU
-bin/mpdecision
+#bin/mpdecision
 bin/thermal-engine
-vendor/lib/libqc-opt.so
-vendor/lib/libthermalioctl.so
+#vendor/lib/libqc-opt.so
+#vendor/lib/libthermalioctl.so
 
 # DRM
 bin/qseecomd
 lib/libdrmdecrypt.so
-vendor/firmware/widevine.b00
-vendor/firmware/widevine.b01
-vendor/firmware/widevine.b02
-vendor/firmware/widevine.b03
-vendor/firmware/widevine.mdt
-vendor/lib/libdrmdiag.so
+#vendor/firmware/widevine.b00
+#vendor/firmware/widevine.b01
+#vendor/firmware/widevine.b02
+#vendor/firmware/widevine.b03
+#vendor/firmware/widevine.mdt
+#vendor/lib/libdrmdiag.so
 vendor/lib64/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libsecureui.so
 vendor/lib/lib-sec-disp.so
-vendor/lib64/drm/libdrmclearkeyplugin.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # GPS
--app/com.qualcomm.location/com.qualcomm.location.apk
--app/com.qualcomm.services.location/com.qualcomm.services.location.apk
 -app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
@@ -240,7 +238,7 @@ vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 
 # Graphics
-vendor/lib/egl/eglsubAndroid.so
+vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
@@ -264,23 +262,23 @@ etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 
 # IMS - currently unused but have dependencies to qmi
-bin/imsdatadaemon
-bin/imsqmidaemon
-bin/ims_rtp_daemon
-vendor/lib/libmmrtpencoder.so
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
+#bin/imsdatadaemon
+#bin/imsqmidaemon
+#bin/ims_rtp_daemon
+#vendor/lib/libmmrtpencoder.so
+#vendor/lib/lib-dplmedia.so
+#vendor/lib/lib-imsdpl.so
+#vendor/lib/lib-imsqimf.so
+#vendor/lib/lib-imsrcs.so
+#vendor/lib/lib-imss.so
+#vendor/lib/lib-imsSDP.so
+#vendor/lib/lib-imsvt.so
+#vendor/lib/lib-imsxml.so
+#vendor/lib/lib-rcsimssjni.so
+#vendor/lib/lib-rtpcommon.so
+#vendor/lib/lib-rtpcore.so
+#vendor/lib/lib-rtpdaemoninterface.so
+#vendor/lib/lib-rtpsl.so
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -308,7 +306,7 @@ etc/firmware/venus.mdt
 bin/batt_health
 bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
-bin/mount_ext4.sh
+#bin/mount_ext4.sh	#mount.sh
 
 # NFC
 etc/firmware/BCM20795A2_001.003.025.0005.0035_Generic_I2C_NCD_Signed_configdata.ncd
@@ -329,7 +327,8 @@ vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi.so
 vendor/lib/libqmi_client_qmux.so
-vendor/lib/libqmi_csvt_srvc.so
+vendor/lib64/libqmi_client_helper.so
+#vendor/lib/libqmi_common_so.so
 vendor/lib/libqmiservices.so
 vendor/lib/libdiag.so
 vendor/lib/libqmi_cci.so
@@ -338,20 +337,20 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
-bin/efsks
-bin/ks
+#bin/efsks
+#bin/ks
 bin/netmgrd
-bin/qcks
+#bin/qcks
 bin/qmi_motext_hook
 bin/qmuxd
 bin/radish
-bin/rild:bin/rild.mmi
+bin/rild
 bin/rfs_access
 bin/rmt_storage
-lib/libadropbox.so
+lib64/libadropbox.so
 lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
-lib/libmdmdetect.so
+#lib/libmdmdetect.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
 lib/libril.so
@@ -366,7 +365,7 @@ vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
 
 # Sensors
-bin/stm401
+#bin/stm401
 etc/firmware/sensorhubfw.bin
 lib/hw/sensors.msm8992.so
 
