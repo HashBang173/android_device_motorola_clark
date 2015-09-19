@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+-include vendor/motorola/clark/BoardConfigVendor.mk
+
 LOCAL_PATH := device/motorola/clark
 
 TARGET_SPECIFIC_HEADER_PATH := device/motorola/clark/include

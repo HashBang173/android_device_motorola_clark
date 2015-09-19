@@ -13,6 +13,13 @@
 # limitations under the License.
 DEVICE_PACKAGE_OVERLAYS := device/motorola/clark/overlay
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+$(call inherit-product-if-exists, vendor/motorola/clark/clark-vendor.mk)
+
 # copy customized media_profiles and media_codecs xmls for 8992
 PRODUCT_COPY_FILES += device/motorola/clark/configs/media_profiles.xml:system/etc/media_profiles.xml \
                       device/motorola/clark/configs/media_codecs.xml:system/etc/media_codecs.xml
