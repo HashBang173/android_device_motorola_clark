@@ -15,7 +15,7 @@ bin/adspd
 
 # Audio
 bin/adsprpcd
-#lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
+#lib/soundfx/libspeakerbundle.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
@@ -64,6 +64,10 @@ bin/mm-qcamera-daemon
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_8_0.fw
+
 lib/hw/camera.msm8992.so:lib/hw/camera.msm8992.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
@@ -363,6 +367,12 @@ vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libsmemlog.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
+
+# Touchscreen firmware
+etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
+etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
+etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
+
 
 # Sensors
 #bin/stm401
