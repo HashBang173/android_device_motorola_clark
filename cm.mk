@@ -20,7 +20,4 @@ DEVICE_PACKAGE_OVERLAYS += device/motorola/clark/overlay
 PRODUCT_NAME := cm_clark
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := XT1575
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=motorola/clark_retus/clark:5.1.1/LPH23.116-18/18:user/release-keys \
-    PRIVATE_BUILD_DESC="clark_retus-user 5.1.1 LPH23.116-18 18 release-keys"
+PRODUCT_GMS_CLIENTID_BASE := android-motorola
