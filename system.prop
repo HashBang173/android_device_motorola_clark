@@ -4,13 +4,15 @@
 
 # Audio
 af.fast_track_multiplier=1
+audio.deep_buffer.media=true
 audio_hal.period_size=192
 audio.offload.buffer.size.kb=32
-audio.offload.disable=0
+audio.offload.disable=false
 audio.offload.gapless.enabled=false
-audio.offload.multiple.enabled=true
+audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+audio.offload.track.enable=true
 audio.offload.video=true
 persist.audio.calfile0=/etc/acdbdata/Bluetooth_cal.acdb
 persist.audio.calfile1=/etc/acdbdata/General_cal.acdb
@@ -24,6 +26,7 @@ persist.audio.fluence.speaker=false
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicecomm=true
 persist.audio.fluence.voicerec=false
+persist.audio.ssr.3mic=false
 ro.config.vc_call_vol_steps=8
 ro.qc.sdk.audio.ssr=false
 ro.qc.sdk.audio.fluencetype=fluence
@@ -34,6 +37,7 @@ ro.audio.flinger_standbytime_ms=300
 bluetooth.hfp.client=1
 qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
+ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.hfp.ver=1.6
 
 # CABL
@@ -63,11 +67,9 @@ ro.fm.transmitter=false
 ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/frp
 
 # GPS
-persist.gps.qc_nlp_in_use=0
 persist.mot.gps.assisted=false
 persist.mot.gps.conf.from.sim=true
 persist.mot.gps.smart_battery=1
-ro.gps.agps_provider=1
 ro.pip.gated=0
 
 # Graphics
@@ -88,7 +90,6 @@ ro.opengles.version=196610
 ro.sf.lcd_density=560
 
 # Media
-av.offload.enable=false
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true
 media.stagefright.enable-aac=true
@@ -97,9 +98,10 @@ media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 media.aac_51_output_enabled=true
 mmp.enable.3g2=true
-persist.dpm.feature=3
+persist.dpm.feature=0
 ro.hdmi.enable=true
 tunnel.audio.encode=false
+qcom.hw.aac.encoder=false
 use.voice.path.for.pcm.voip=true
 vidc.enc.dcvs.extra-buff-count=2
 
@@ -130,6 +132,8 @@ net.tethering.noprovisioning=true
 persist.data.mode=concurrent
 persist.data.qmi.adb_logmask=0
 persist.qcril_uim_vcc_feature=1
+persist.radio.app_hw_mbn_path=/firmware/image/modem_pr/mcfg/configs/mcfg_hw/generic/common/MSM8994/LA
+persist.radio.custom_ecc=1
 persist.radio.0x9e_not_callname=1
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.apn_delay=5000
@@ -137,13 +141,12 @@ persist.radio.dfr_mode_set=1
 persist.radio.force_get_pref=1
 persist.radio.mcfg_noreset=1
 persist.radio.mcfg_remote=1
-persist.radio.mot_ecc_custid=common
-persist.radio.mot_ecc_enabled=1
 persist.radio.msgtunnel.start=true
 persist.radio.mt_sms_ack=30
 persist.radio.no_wait_for_card=1
 persist.radio.oem_ind_to_both=0
 persist.radio.relay_oprt_change=1
+persist.radio.sib16_support=1
 persist.sys.qc.sub.rdump.on=1
 rild.libargs=-d /dev/smd0
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
