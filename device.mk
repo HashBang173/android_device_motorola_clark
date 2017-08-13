@@ -157,7 +157,8 @@ PRODUCT_PACKAGES += \
 
 # Perf
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/etc/msm_irqbalance.conf
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/etc/msm_irqbalance.conf \
+    $(LOCAL_PATH)/configs/perfd-preset-values:system/etc/perfd-preset-values
 
 # Permissions
 PRODUCT_COPY_FILES += \

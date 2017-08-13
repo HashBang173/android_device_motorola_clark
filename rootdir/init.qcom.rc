@@ -574,6 +574,7 @@ service perfd /system/vendor/bin/perfd
     group system
     socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service iop /system/bin/iop
     class main

@@ -130,6 +130,12 @@ get-set-forall /sys/class/devfreq/qcom,mincpubw*/governor cpufreq
 # Disable sched_boost
 write /proc/sys/kernel/sched_boost 0
 
+# Start perfd and restore preset values
+rm /data/system/perfd/default_values
+cp /system/etc/perfd-preset-values /data/system/perfd/default_values
+start perfd
+wait /data/system/perfd/default_values
+
 # set GPU default power level to 5 (180MHz) instead of 4 (305MHz)
 write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
 

@@ -33,3 +33,9 @@ allow init-power-sh rootfs:file { getattr open read };
 allow init-power-sh sysfs:dir { open read };
 allow init-power-sh sysfs:file getattr;
 allow init-power-sh sysfs:lnk_file getattr;
+
+allow init-power-sh init:unix_stream_socket connectto;
+allow init-power-sh mpctl_data_file:dir rw_dir_perms;
+allow init-power-sh mpctl_data_file:file create_file_perms;
+allow init-power-sh perfd_prop:property_service set;
+allow init-power-sh property_socket:sock_file write;
