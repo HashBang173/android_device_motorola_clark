@@ -270,4 +270,4 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
 PRODUCT_COPY_FILES += \
-    device/motorola/clark/configs/manifest.xml:vendor/manifest.xml
+    device/motorola/clark/configs/manifest.xml:system/vendor/manifest.xml
