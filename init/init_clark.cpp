@@ -33,12 +33,10 @@
 #include <sys/_system_properties.h>
 
 #include <android-base/properties.h>
-#include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
+#include "vendor_init.h"
 
-namespace android {
-namespace init {
+using android::base::GetProperty;
 
 static void setSsim(void);
 static void setMsim(void);
@@ -60,12 +58,12 @@ void vendor_load_properties()
     std::string sku;
     std::string car;
 
-    platform = android::base::GetProperty("ro.board.platform", "");
+    platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)
         return;
 
-    sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    car = android::base::GetProperty("ro.boot.carrier", "");
+    sku = GetProperty("ro.boot.hardware.sku", "");
+    car = GetProperty("ro.boot.carrier", "");
 
     property_override("ro.product.model", sku.c_str());
     property_override("ro.build.product", "clark");
@@ -172,5 +170,3 @@ static void setMsim(void)
     property_set("ro.media.enc.aud.codec", "amrnb");
 }
 
-}  // namespace init
-}  // namespace android
