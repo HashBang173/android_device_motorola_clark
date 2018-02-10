@@ -1580,7 +1580,7 @@ int QCamera3HardwareInterface::validateCaptureRequest(
         return BAD_VALUE;
     }
     if (request->num_output_buffers >= MAX_NUM_STREAMS) {
-        ALOGE("%s: Number of buffers %d equals or is greater than maximum number of streams!",
+        ALOGE("%s: Number of buffers %d equals or is greater than maximum number of streams %d!",
                 __func__, request->num_output_buffers, MAX_NUM_STREAMS);
         return BAD_VALUE;
     }
@@ -3200,7 +3200,7 @@ template <typename fwkType, class mapType> int lookupHalName(const mapType *arr,
         }
     }
 
-    ALOGE("%s: Cannot find matching hal type fwk_name=%d", __func__, fwk_name);
+    ALOGE("%s: Cannot find matching hal type fwk_name=%d", __func__, (int) fwk_name);
     return NAME_NOT_FOUND;
 }
 
