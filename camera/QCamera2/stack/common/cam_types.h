@@ -756,6 +756,7 @@ typedef struct  {
 typedef struct  {
     cam_rect_t rect;
     int32_t weight; /* weight of the area, valid for focusing/metering areas */
+    volatile char moto_reserved[4];
 } cam_area_t;
 
 typedef enum {
@@ -894,6 +895,7 @@ typedef struct {
         cam_coordinate_type_t coordinate[MAX_ROI];
         uint32_t aec_roi_idx[MAX_ROI];
     } cam_aec_roi_position;
+    volatile char moto_reserved[12];
 } cam_set_aec_roi_t;
 
 typedef struct {
@@ -1123,6 +1125,7 @@ typedef struct {
     cam_focus_mode_type focus_mode;        /* focus mode from backend */
     uint32_t focused_frame_idx;
     int32_t focus_pos;
+    volatile char moto_reserved[32];
 } cam_auto_focus_data_t;
 
 typedef struct {
@@ -1139,6 +1142,7 @@ typedef struct {
 typedef struct {
     uint8_t num_of_streams;
     cam_stream_crop_info_t crop_info[MAX_NUM_STREAMS];
+    volatile char moto_reserved[64];
 } cam_crop_data_t;
 
 typedef enum {
@@ -1221,6 +1225,7 @@ typedef struct {
     int32_t est_snap_iso_value;
     uint32_t est_snap_luma;
     uint32_t est_snap_target;
+    volatile char moto_reserved[24];
 } cam_3a_params_t;
 
 typedef struct {
