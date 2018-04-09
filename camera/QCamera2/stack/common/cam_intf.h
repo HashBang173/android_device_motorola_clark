@@ -575,10 +575,8 @@ typedef struct {
     INCLUDE(CAM_INTF_META_AUTOFOCUS_DATA,               cam_auto_focus_data_t,          1);
     INCLUDE(CAM_INTF_PARM_UPDATE_DEBUG_LEVEL,           uint32_t,                       1);
 
-    INCLUDE(MOTO1,                                   uint8_t,                     4);
-    INCLUDE(MOTO2,                                   uint8_t,                     232);
-    INCLUDE(MOTO3,                                   uint8_t,                     16);
-    INCLUDE(MOTO4,                                   uint8_t,                     4);
+    INCLUDE(MOTO1,                                      uint8_t,                     24);
+    INCLUDE(MOTO2,                                      uint8_t,                     232);
 
     /* Specific to HAl1 */
     INCLUDE(CAM_INTF_META_CROP_DATA,                    cam_crop_data_t,                1);
@@ -696,6 +694,8 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_SCE_FACTOR,                   int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_FD,                           cam_fd_set_parm_t,           1);
     INCLUDE(CAM_INTF_PARM_MCE,                          int32_t,                     1);
+    INCLUDE(MOTO3,                                      uint8_t,                     16);
+    INCLUDE(MOTO4,                                      uint8_t,                     24);
     INCLUDE(CAM_INTF_PARM_HFR,                          int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_REDEYE_REDUCTION,             int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_WAVELET_DENOISE,              cam_denoise_param_t,         1);
@@ -752,6 +752,7 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_FLASH_BRACKETING,             cam_flash_bracketing_t,      1);
     INCLUDE(CAM_INTF_META_JPEG_GPS_COORDINATES,         double,                      3);
     INCLUDE(CAM_INTF_META_JPEG_GPS_PROC_METHODS,        uint8_t,                     GPS_PROCESSING_METHOD_SIZE);
+    INCLUDE(MOTO5,                                      uint8_t,                     8);
     INCLUDE(CAM_INTF_META_JPEG_GPS_TIMESTAMP,           int64_t,                     1);
     INCLUDE(CAM_INTF_META_JPEG_ORIENTATION,             int32_t,                     1);
     INCLUDE(CAM_INTF_META_JPEG_QUALITY,                 uint32_t,                    1);
@@ -767,33 +768,32 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_CAPTURE_FRAME_CONFIG,         cam_capture_frame_config_t,  1);
     INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
 
-    INCLUDE(MOTO5,                                   uint8_t,                     4);
-    INCLUDE(MOTO6,                                   uint8_t,                     4);
-    INCLUDE(MOTO7,                                   uint8_t,                     4);
-    INCLUDE(MOTO8,                                   uint8_t,                     4);
-    INCLUDE(MOTO9,                                   uint8_t,                     4);
-    INCLUDE(MOTO10,                                   uint8_t,                     4);
-    INCLUDE(MOTO11,                                   uint8_t,                     4);
-    INCLUDE(MOTO12,                                   uint8_t,                     4);
-    INCLUDE(MOTO13,                                   uint8_t,                     4);
-    INCLUDE(MOTO14,                                   uint8_t,                     4);
-    INCLUDE(MOTO15,                                   uint8_t,                     4);
-    INCLUDE(MOTO16,                                   uint8_t,                     4);
-    INCLUDE(MOTO17,                                   uint8_t,                     4);
-    INCLUDE(MOTO18,                                   uint8_t,                     4);
-    INCLUDE(MOTO19,                                   uint8_t,                     4);
-    INCLUDE(MOTO20,                                   uint8_t,                     4);
-    INCLUDE(MOTO21,                                   uint8_t,                     4);
-    INCLUDE(MOTO22,                                   uint8_t,                     4);
-    INCLUDE(MOTO23,                                   uint8_t,                     4);
-    INCLUDE(MOTO24,                                   uint8_t,                     4);
-    INCLUDE(MOTO25,                                   uint8_t,                     4);
-    INCLUDE(MOTO26,                                   uint8_t,                     4);
-    INCLUDE(MOTO27,                                   uint8_t,                     4);
-    INCLUDE(MOTO28,                                   uint8_t,                     4);
-    INCLUDE(MOTO29,                                   uint8_t,                     4);
-    INCLUDE(MOTO30,                                   uint8_t,                     4);
-    INCLUDE(MOTO31,                                   uint8_t,                     4);
+    INCLUDE(MOTO6,                                      uint8_t,                     4);
+    INCLUDE(MOTO7,                                      uint8_t,                     4);
+    INCLUDE(MOTO8,                                      uint8_t,                     4);
+    INCLUDE(MOTO9,                                      uint8_t,                     4);
+    INCLUDE(MOTO10,                                     uint8_t,                     4);
+    INCLUDE(MOTO11,                                     uint8_t,                     4);
+    INCLUDE(MOTO12,                                     uint8_t,                     4);
+    INCLUDE(MOTO13,                                     uint8_t,                     4);
+    INCLUDE(MOTO14,                                     uint8_t,                     4);
+    INCLUDE(MOTO15,                                     uint8_t,                     4);
+    INCLUDE(MOTO16,                                     uint8_t,                     4);
+    INCLUDE(MOTO17,                                     uint8_t,                     4);
+    INCLUDE(MOTO18,                                     uint8_t,                     4);
+    INCLUDE(MOTO19,                                     uint8_t,                     4);
+    INCLUDE(MOTO20,                                     uint8_t,                     4);
+    INCLUDE(MOTO21,                                     uint8_t,                     4);
+    INCLUDE(MOTO22,                                     uint8_t,                     4);
+    INCLUDE(MOTO23,                                     uint8_t,                     4);
+    INCLUDE(MOTO24,                                     uint8_t,                     4);
+    INCLUDE(MOTO25,                                     uint8_t,                     4);
+    INCLUDE(MOTO26,                                     uint8_t,                     4);
+    INCLUDE(MOTO27,                                     uint8_t,                     4);
+    INCLUDE(MOTO28,                                     uint8_t,                     28);
+    INCLUDE(MOTO29,                                     uint8_t,                     4);
+    INCLUDE(MOTO30,                                     uint8_t,                     1);
+    INCLUDE(MOTO31,                                     uint8_t,                     1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to

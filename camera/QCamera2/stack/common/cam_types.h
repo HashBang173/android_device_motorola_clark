@@ -904,6 +904,7 @@ typedef struct {
     cam_rect_t roi[MAX_ROI];
     int32_t weight[MAX_ROI];
     uint8_t is_multiwindow;
+    volatile char moto_reserved[20];
 } cam_roi_info_t;
 
 typedef enum {
@@ -916,6 +917,7 @@ typedef enum {
 typedef struct {
     uint8_t denoise_enable;
     cam_denoise_process_type_t process_plates;
+    volatile char moto_reserved[4];
 } cam_denoise_param_t;
 
 #define CAM_FACE_PROCESS_MASK_DETECTION    (1U<<0)
@@ -1469,8 +1471,8 @@ typedef enum {
     CAM_INTF_PARM_AF_ROI,
     CAM_INTF_PARM_SCE_FACTOR,
     CAM_INTF_PARM_FD,
-    CAM_INTF_PARM_MCE,
     MOTO3,
+    CAM_INTF_PARM_MCE,
     CAM_INTF_PARM_HFR,
     CAM_INTF_PARM_REDEYE_REDUCTION,
     CAM_INTF_PARM_WAVELET_DENOISE,
