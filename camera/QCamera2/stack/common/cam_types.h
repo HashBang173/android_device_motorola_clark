@@ -1039,6 +1039,7 @@ typedef struct {
     uint8_t blink_detected;    /* if blink is detected */
     uint8_t left_blink;        /* left eye blink degeree (0, -100) */
     uint8_t right_blink;       /* right eye blink degree (0, - 100) */
+    volatile char moto_reserved1[4]; //hack
 } cam_face_detection_info_t;
 
 typedef struct {
@@ -1723,7 +1724,38 @@ typedef enum {
     CAM_INTF_META_IMGLIB, /* cam_intf_meta_imglib_t */
     /* FLIP mode parameter*/
     CAM_INTF_PARM_FLIP,
-    CAM_INTF_PARM_MAX
+    MOTO1, // 182
+    MOTO2,
+    MOTO3,
+    MOTO4,
+    MOTO5,
+    MOTO6,
+    MOTO7,
+    MOTO8,
+    MOTO9,
+    MOTO10,
+    MOTO11,
+    MOTO12,
+    MOTO13,
+    MOTO14,
+    MOTO15,
+    MOTO16,
+    MOTO17,
+    MOTO18,
+    MOTO19,
+    MOTO20,
+    MOTO21,
+    MOTO22,
+    MOTO23,
+    MOTO24,
+    MOTO25,
+    MOTO26,
+    MOTO27,
+    MOTO28,
+    MOTO29,
+    MOTO30,
+    MOTO31,
+    CAM_INTF_PARM_MAX // 213
 } cam_intf_parm_type_t;
 
 typedef struct {
