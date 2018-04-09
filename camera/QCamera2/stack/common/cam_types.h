@@ -1450,6 +1450,8 @@ typedef enum {
     /* Whether optical image stabilization is enabled. */
     CAM_INTF_META_LENS_OPT_STAB_MODE,
 
+    MOTO1,
+    MOTO2,
     /* specific to HAl1 */
     CAM_INTF_META_AUTOFOCUS_DATA,
     CAM_INTF_PARM_QUERY_FLASH4SNAP,
@@ -1469,11 +1471,13 @@ typedef enum {
     CAM_INTF_PARM_SCE_FACTOR,
     CAM_INTF_PARM_FD,
     CAM_INTF_PARM_MCE,
+    MOTO3,
     CAM_INTF_PARM_HFR,
     CAM_INTF_PARM_REDEYE_REDUCTION,
     CAM_INTF_PARM_WAVELET_DENOISE,
     CAM_INTF_PARM_TEMPORAL_DENOISE,
     CAM_INTF_PARM_HISTOGRAM, /* 40 */
+    MOTO4,
     CAM_INTF_PARM_ASD_ENABLE,
     CAM_INTF_PARM_RECORDING_HINT,
     CAM_INTF_PARM_HDR,
@@ -1719,15 +1723,11 @@ typedef enum {
     /* Manual lens position info */
     CAM_INTF_PARM_MANUAL_FOCUS_POS,
     /* Manual White balance gains */
-    CAM_INTF_PARM_WB_MANUAL,
+    CAM_INTF_PARM_WB_MANUAL, // 183
     /* IMG LIB reprocess debug section */
     CAM_INTF_META_IMGLIB, /* cam_intf_meta_imglib_t */
     /* FLIP mode parameter*/
     CAM_INTF_PARM_FLIP,
-    MOTO1, // 182
-    MOTO2,
-    MOTO3,
-    MOTO4,
     MOTO5,
     MOTO6,
     MOTO7,
