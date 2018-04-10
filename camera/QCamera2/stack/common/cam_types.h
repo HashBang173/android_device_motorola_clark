@@ -49,7 +49,7 @@
 #define CEILING4(X)  (((X) + 0x0003) & 0xFFFC)
 #define CEILING2(X)  (((X) + 0x0001) & 0xFFFE)
 
-#define MAX_ZOOMS_CNT 91
+#define MAX_ZOOMS_CNT 61
 #define MAX_SIZES_CNT 30 // Good
 #define MAX_EXP_BRACKETING_LENGTH 32 // Good
 #define MAX_ROI 5
@@ -620,6 +620,7 @@ typedef enum {
     CAM_SCENE_MODE_FACE_PRIORITY,
     CAM_SCENE_MODE_BARCODE,
     CAM_SCENE_MODE_HDR,
+    CAM_SCENE_MODE_MOTO,
     CAM_SCENE_MODE_MAX
 } cam_scene_mode_type;
 

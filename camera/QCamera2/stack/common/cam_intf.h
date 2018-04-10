@@ -66,6 +66,7 @@ typedef struct{
     /* supported iso modes */
     size_t supported_iso_modes_cnt;
     cam_iso_mode_type supported_iso_modes[CAM_ISO_MODE_MAX];
+    volatile char moto_reserved1[4]; //hack
 
     /* supported flash modes */
     size_t supported_flash_modes_cnt;
@@ -694,8 +695,10 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_SCE_FACTOR,                   int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_FD,                           cam_fd_set_parm_t,           1);
     INCLUDE(CAM_INTF_PARM_MCE,                          int32_t,                     1);
-    INCLUDE(MOTO3,                                      uint8_t,                     16);
-    INCLUDE(MOTO4,                                      uint8_t,                     24);
+    INCLUDE(MOTO4,                                      uint8_t,                     4);
+    INCLUDE(MOTO27,                                     uint8_t,                     4);
+    INCLUDE(MOTO28,                                     uint8_t,                     28);
+    INCLUDE(MOTO3,                                      uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_HFR,                          int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_REDEYE_REDUCTION,             int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_WAVELET_DENOISE,              cam_denoise_param_t,         1);
@@ -750,9 +753,11 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_STATS_AF_PAAF,                uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_FOCUS_BRACKETING,             cam_af_bracketing_t,         1);
     INCLUDE(CAM_INTF_PARM_FLASH_BRACKETING,             cam_flash_bracketing_t,      1);
+    volatile char moto_reserved[2];
+    INCLUDE(MOTO22,                                     uint8_t,                     4);
+    INCLUDE(MOTO23,                                     uint8_t,                     4);
     INCLUDE(CAM_INTF_META_JPEG_GPS_COORDINATES,         double,                      3);
     INCLUDE(CAM_INTF_META_JPEG_GPS_PROC_METHODS,        uint8_t,                     GPS_PROCESSING_METHOD_SIZE);
-    INCLUDE(MOTO5,                                      uint8_t,                     8);
     INCLUDE(CAM_INTF_META_JPEG_GPS_TIMESTAMP,           int64_t,                     1);
     INCLUDE(CAM_INTF_META_JPEG_ORIENTATION,             int32_t,                     1);
     INCLUDE(CAM_INTF_META_JPEG_QUALITY,                 uint32_t,                    1);
@@ -768,6 +773,7 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_CAPTURE_FRAME_CONFIG,         cam_capture_frame_config_t,  1);
     INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
 
+    INCLUDE(MOTO5,                                      uint8_t,                     4);
     INCLUDE(MOTO6,                                      uint8_t,                     4);
     INCLUDE(MOTO7,                                      uint8_t,                     4);
     INCLUDE(MOTO8,                                      uint8_t,                     4);
@@ -784,13 +790,9 @@ typedef struct {
     INCLUDE(MOTO19,                                     uint8_t,                     4);
     INCLUDE(MOTO20,                                     uint8_t,                     4);
     INCLUDE(MOTO21,                                     uint8_t,                     4);
-    INCLUDE(MOTO22,                                     uint8_t,                     4);
-    INCLUDE(MOTO23,                                     uint8_t,                     4);
     INCLUDE(MOTO24,                                     uint8_t,                     4);
     INCLUDE(MOTO25,                                     uint8_t,                     4);
     INCLUDE(MOTO26,                                     uint8_t,                     4);
-    INCLUDE(MOTO27,                                     uint8_t,                     4);
-    INCLUDE(MOTO28,                                     uint8_t,                     28);
     INCLUDE(MOTO29,                                     uint8_t,                     4);
     INCLUDE(MOTO30,                                     uint8_t,                     1);
     INCLUDE(MOTO31,                                     uint8_t,                     1);
