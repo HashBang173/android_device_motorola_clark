@@ -136,6 +136,7 @@ typedef struct{
     uint32_t sensor_mount_angle;                            /* sensor mount angle */
 
     float focal_length;                                     /* focal length */
+    volatile char moto_reserved2[4]; // hack
     float hor_view_angle;                                   /* horizontal view angle */
     float ver_view_angle;                                   /* vertical view angle */
 
@@ -286,6 +287,7 @@ typedef struct{
     /* Maximum number of supported points in the tonemap
        curve */
     int32_t max_tone_map_curve_points;
+    volatile char moto_reserved3[4]; //hack
 
     /* supported formats */
     size_t supported_scalar_format_cnt;
@@ -317,6 +319,7 @@ typedef struct{
     cam_scene_mode_overrides_t scene_mode_overrides[CAM_SCENE_MODE_MAX];
     size_t scale_picture_sizes_cnt;
     cam_dimension_t scale_picture_sizes[MAX_SCALE_SIZES_CNT];
+    volatile char moto_reserved4[32]; //hack
 
     uint8_t flash_available;
 
@@ -576,7 +579,7 @@ typedef struct {
     INCLUDE(CAM_INTF_META_AUTOFOCUS_DATA,               cam_auto_focus_data_t,          1);
     INCLUDE(CAM_INTF_PARM_UPDATE_DEBUG_LEVEL,           uint32_t,                       1);
 
-    INCLUDE(MOTO1,                                      uint8_t,                     24);
+    volatile char moto_reserved1[24];
     INCLUDE(MOTO2,                                      uint8_t,                     232);
 
     /* Specific to HAl1 */
@@ -771,31 +774,10 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_ROTATION,                     cam_rotation_info_t,         1);
     INCLUDE(CAM_INTF_META_IMGLIB,                       cam_intf_meta_imglib_t,      1);
     INCLUDE(CAM_INTF_PARM_CAPTURE_FRAME_CONFIG,         cam_capture_frame_config_t,  1);
-    INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
-
-    INCLUDE(MOTO5,                                      uint8_t,                     4);
-    INCLUDE(MOTO6,                                      uint8_t,                     4);
-    INCLUDE(MOTO7,                                      uint8_t,                     4);
-    INCLUDE(MOTO8,                                      uint8_t,                     4);
-    INCLUDE(MOTO9,                                      uint8_t,                     4);
-    INCLUDE(MOTO10,                                     uint8_t,                     4);
-    INCLUDE(MOTO11,                                     uint8_t,                     4);
-    INCLUDE(MOTO12,                                     uint8_t,                     4);
-    INCLUDE(MOTO13,                                     uint8_t,                     4);
-    INCLUDE(MOTO14,                                     uint8_t,                     4);
-    INCLUDE(MOTO15,                                     uint8_t,                     4);
-    INCLUDE(MOTO16,                                     uint8_t,                     4);
-    INCLUDE(MOTO17,                                     uint8_t,                     4);
-    INCLUDE(MOTO18,                                     uint8_t,                     4);
-    INCLUDE(MOTO19,                                     uint8_t,                     4);
-    INCLUDE(MOTO20,                                     uint8_t,                     4);
-    INCLUDE(MOTO21,                                     uint8_t,                     4);
-    INCLUDE(MOTO24,                                     uint8_t,                     4);
-    INCLUDE(MOTO25,                                     uint8_t,                     4);
-    INCLUDE(MOTO26,                                     uint8_t,                     4);
-    INCLUDE(MOTO29,                                     uint8_t,                     4);
     INCLUDE(MOTO30,                                     uint8_t,                     1);
     INCLUDE(MOTO31,                                     uint8_t,                     1);
+    INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
+
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to
