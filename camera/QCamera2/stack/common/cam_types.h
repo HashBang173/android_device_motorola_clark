@@ -290,7 +290,8 @@ typedef enum {
     CAM_FORMAT_YUV_444_NV24,
     CAM_FORMAT_YUV_444_NV42,
 
-    CAM_FORMAT_MAX
+    CAM_FORMAT_MAX,
+    CAM_FORMAT_MOTO
 } cam_format_t;
 
 typedef enum {
