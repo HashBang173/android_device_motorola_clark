@@ -277,7 +277,7 @@ vendor/lib64/libthermalclient.so
 
 # DRM
 # TZBSP
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libdrmfs.so
 vendor/lib64/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -332,7 +332,7 @@ vendor/lib/libsd_sdk_display.so
 vendor/lib64/libsd_sdk_display.so
 
 # QMI
-bin/ATFWD-daemon
+bin/ATFWD-daemon:vendor/bin/ATFWD-daemon
 bin/irsc_util:vendor/bin/irsc_util
 bin/pm-proxy:vendor/bin/pm-proxy
 bin/pm-service:vendor/bin/pm-service

@@ -412,7 +412,7 @@ service location_mq /system/bin/location-mq
     group gps
     disabled
 
-service atfwd /system/bin/ATFWD-daemon
+service atfwd /system/vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
