@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+#include <utils/String16.h>
+
 extern "C" void _ZN7android5FenceD1Ev() {
 
+}
+
+extern "C" bool _ZN7android8MetaData9findInt64EjPx(uint32_t key, int64_t *value) {
+    return false;
+}
+
+extern "C" void _ZN7android9StopWatchC1EPKcij() {
 }
