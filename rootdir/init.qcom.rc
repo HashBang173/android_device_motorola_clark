@@ -315,12 +315,6 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-on property:persist.radio.atfwd.start=false
-    stop atfwd
-
-on property:radio.atfwd.start=false
-    stop atfwd
-
 on property:vendor.wc_transport.start_hci=true
     start start_hci_filter
 
@@ -408,11 +402,6 @@ service location_mq /system/bin/location-mq
     user gps
     group gps
     disabled
-
-service atfwd /system/vendor/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
 
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
